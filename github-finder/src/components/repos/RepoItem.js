@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const RepoItem = ({ repo }) => {
   return (
     <div className='card'>
-      <h1>
+      <h3>
         <a href={repo.html_url}>{repo.name}</a>
-      </h1>
+      </h3>
     </div>
   );
 };

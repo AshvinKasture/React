@@ -59,7 +59,7 @@ class App extends Component {
       `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
     // console.log(res.data);
-    console.log(res.data);
+    // console.log(res.data);
     this.setState({
       user: res.data,
       loading: false,
@@ -76,7 +76,7 @@ class App extends Component {
     // console.log(res.data);
 
     this.setState({
-      user: res.data,
+      repos: res.data,
       loading: false,
     });
   };
@@ -95,6 +95,8 @@ class App extends Component {
 
   render() {
     const { users, loading, user, repos } = this.state;
+    // console.log('main app');
+    // console.log(user);
     return (
       <Router>
         <div className='App'>
@@ -121,16 +123,20 @@ class App extends Component {
               <Route
                 exact
                 path='/user/:login'
-                render={(props) => (
-                  <User
-                    {...props}
-                    getUser={this.getUser}
-                    getUserRepos={this.getUserRepos}
-                    repos={repos}
-                    user={user}
-                    loading={loading}
-                  />
-                )}
+                render={(props) => {
+                  // console.log('Inside app');
+                  // console.log(user);
+                  return (
+                    <User
+                      {...props}
+                      getUser={this.getUser}
+                      getUserRepos={this.getUserRepos}
+                      repos={repos}
+                      user={user}
+                      loading={loading}
+                    />
+                  );
+                }}
               />
             </Switch>
           </div>
